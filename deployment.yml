@@ -1,12 +1,19 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: snow-classifier
 spec:
-  containers:
-  - name: snow-classifier
-    image: us.icr.io/mfs_ibm_docker_space/snow_classifier:v4
-    ports:
-    - containerPort: 80
-  imagePullSecrets:
-  - name: icr
+  replicas: 3
+  selector:
+    matchLabels:
+      app: snow-classifier
+  template:
+    metadata:
+      labels:
+        app: snow-classifier
+    spec:
+      containers:
+        - name: snow-classifier
+        image: us.icr.io/mfs_ibm_docker_space/snow_classifier:v4
+        ports:
+          - containerPort: 80
