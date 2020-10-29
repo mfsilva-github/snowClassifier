@@ -13,7 +13,7 @@ spec:
         app: snow-classifier
     spec:
       containers:
-        - name: snow-classifier
+      - name: snow-classifier
         image: us.icr.io/mfs_ibm_docker_space/snow_classifier:v4
         ports:
-          - containerPort: 80
+        - containerPort: 80
